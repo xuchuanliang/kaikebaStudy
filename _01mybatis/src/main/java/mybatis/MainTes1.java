@@ -1,5 +1,6 @@
 package mybatis;
 
+import mybatis.bean.Dept;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -11,9 +12,10 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
+ * 第一课
  * 使用mybatis插入数据，且跟踪源码
  */
-public class MainTest {
+public class MainTes1 {
     /**
      * 总结：mybatis执行总流程如下：
      * 1.Mybatis核心配置文件：配置数据源，事务管理方式，指定SQL映射文件位置
