@@ -3,7 +3,20 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.Mapper.DeptMapper">
+
+    <resultMap id="findAllResMap" type="mybatis.bean.Dept">
+        <id property="id" column="id"></id>
+        <result property="name" column="name"></result>
+        <result property="created" column="created"></result>
+        <result property="flag" column="flag" typeHandler="mybatis.MyTypeHandler"></result>
+    </resultMap>
+
+    <select id="findAll" resultMap="findAllResMap">
+        select * from dept;
+    </select>
+
     <insert id="insertDept" parameterType="mybatis.bean.Dept">
-        insert into dept values (#{id},#{name},#{created})
+        insert into dept values (#{id},#{name},#{created},#{flag,typeHandler=mybatis.MyTypeHandler})
     </insert>
+
 </mapper>

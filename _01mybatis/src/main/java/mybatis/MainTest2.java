@@ -13,6 +13,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 public class MainTest2 {
@@ -24,7 +25,6 @@ public class MainTest2 {
         InputStream inputStream = Resources.getResourceAsStream("mybatis-config.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         sqlSession = sqlSessionFactory.openSession();
-        System.out.println("befort");
     }
 
     /**
@@ -77,9 +77,18 @@ public class MainTest2 {
         Dept dept = new Dept();
         dept.setCreated(new Date());
         dept.setId(UUID.randomUUID().toString());
-        dept.setName("我是大哥哥");
+        dept.setName("我是大大哥哥");
+        dept.setFlag(true);
         DeptMapper mapper = sqlSession.getMapper(DeptMapper.class);
         mapper.insertDept(dept);
+        sqlSession.commit();
+    }
+
+    @Test
+    public void testFindAll(){
+        DeptMapper mapper = sqlSession.getMapper(DeptMapper.class);
+        List<Dept> deptList = mapper.findAll();
+        System.out.println(deptList);
     }
 
     @After
