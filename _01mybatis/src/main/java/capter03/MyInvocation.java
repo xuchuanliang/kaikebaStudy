@@ -12,6 +12,7 @@ import java.lang.reflect.Method;
 public class MyInvocation implements InvocationHandler {
 
     private BaseMethods baseMethods;
+    private BaseMethods proxy1;
 
     public MyInvocation(BaseMethods baseMethods){
         this.baseMethods = baseMethods;
@@ -29,6 +30,9 @@ public class MyInvocation implements InvocationHandler {
      * @throws Throwable
      */
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+
+        System.out.println(proxy==this.proxy1);
+
         Object o = null;
         //1.确认当前的被拦截行为
         String name = method.getName();
@@ -45,6 +49,10 @@ public class MyInvocation implements InvocationHandler {
 
     private void wash(){
         System.out.println("---洗手----");
+    }
+
+    public void setProxy(BaseMethods proxy){
+        this.proxy1 = proxy;
     }
 
 }
