@@ -1,7 +1,7 @@
-package mybatis;
+package capter02.mybatis;
 
-import mybatis.Mapper.DeptMapper;
-import mybatis.bean.Dept;
+import capter02.mybatis.Mapper.DeptMapper;
+import capter02.mybatis.bean.Dept;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

@@ -1,4 +1,4 @@
-package JDBC;
+package capter02.JDBC;
 
 import java.sql.*;
 import java.util.UUID;

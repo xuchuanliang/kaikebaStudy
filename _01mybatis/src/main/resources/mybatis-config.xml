@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
-        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        PUBLIC "-//capter02.mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
@@ -9,18 +9,18 @@
 
 
     <typeHandlers>
-        <typeHandler handler="mybatis.MyTypeHandler" javaType="Boolean" jdbcType="NUMERIC"></typeHandler>
+        <typeHandler handler="capter02.mybatis.MyTypeHandler" javaType="Boolean" jdbcType="NUMERIC"></typeHandler>
     </typeHandlers>
 
-    <objectFactory type="mybatis.MyDeptFacory"></objectFactory>
+    <objectFactory type="capter02.mybatis.MyDeptFacory"></objectFactory>
     
     <plugins>
-        <plugin interceptor="mybatis.MyInterceptor"></plugin>
+        <plugin interceptor="capter02.mybatis.MyInterceptor"></plugin>
     </plugins>
 
     <environments default="development">
         <environment id="development">
-            <transactionManager type="JDBC"/>
+            <transactionManager type="capter02.JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="${jdbc.driver}"/>
                 <property name="url" value="${jdbc.url}"/>
@@ -30,6 +30,6 @@
         </environment>
     </environments>
     <mappers>
-        <package name="mybatis.Mapper"/>
+        <package name="capter02.mybatis.Mapper"/>
     </mappers>
 </configuration>

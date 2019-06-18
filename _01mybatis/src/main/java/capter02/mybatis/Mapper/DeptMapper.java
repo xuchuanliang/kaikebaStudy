@@ -1,6 +1,6 @@
-package mybatis.Mapper;
+package capter02.mybatis.Mapper;
 
-import mybatis.bean.Dept;
+import capter02.mybatis.bean.Dept;
 
 import java.util.List;
 

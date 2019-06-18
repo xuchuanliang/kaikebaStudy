@@ -1,6 +1,6 @@
-package mybatis;
+package capter02.mybatis;
 
-import mybatis.bean.Dept;
+import capter02.mybatis.bean.Dept;
 import org.apache.ibatis.reflection.factory.DefaultObjectFactory;
 
 public class MyDeptFacory extends DefaultObjectFactory {

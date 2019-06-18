@@ -1,4 +1,4 @@
-package mybatis;
+package capter02.mybatis;
 
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandler;

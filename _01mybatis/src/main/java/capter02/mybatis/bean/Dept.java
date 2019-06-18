@@ -1,4 +1,4 @@
-package mybatis.bean;
+package capter02.mybatis.bean;
 
 import java.util.Date;
 
