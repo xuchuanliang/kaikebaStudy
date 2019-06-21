@@ -1,5 +1,6 @@
 package capter02.mybatis.bean;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -9,6 +10,17 @@ public class Dept {
     private Date created;
     private Boolean flag;
     private String contry;
+    private String year;
+
+    public Dept(){
+
+    }
+
+    public Dept(Date created){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy");
+        this.year = simpleDateFormat.format(created);
+        System.out.println(year);
+    }
 
     public Date getCreated() {
         return created;
@@ -48,6 +60,14 @@ public class Dept {
 
     public void setContry(String contry) {
         this.contry = contry;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 
     @Override

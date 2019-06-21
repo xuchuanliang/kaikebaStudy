@@ -17,7 +17,7 @@
         <result property="flag" column="flag" typeHandler="capter02.mybatis.MyTypeHandler"></result>
     </resultMap>
 
-    <select id="findAll" resultMap="findAllResMap">
+    <select id="findAll" resultMap="myResultMap">
         select * from dept;
     </select>
 
