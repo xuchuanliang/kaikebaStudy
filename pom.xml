@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>_01mybatis</module>
+        <module>_02spring_simple</module>
     </modules>
     <packaging>pom</packaging>
 
