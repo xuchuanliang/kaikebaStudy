@@ -3,14 +3,16 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="student" class="com.ant.bean.Student">
-        <property name="age" value="22"></property>
-        <property name="sname" value="xuchuanliang"></property>
-        <property name="teacher" ref="teacher"></property>
-    </bean>
+<!--    <bean id="student" class="com.ant.bean.Student">-->
+<!--        <property name="age" value="22"></property>-->
+<!--        <property name="sname" value="xuchuanliang"></property>-->
+<!--        <property name="teacher" ref="teacher"></property>-->
+<!--    </bean>-->
 
-    <bean id="teacher" class="com.ant.bean.Teacher">
-        <property name="tname" value="Mr Xu"></property>
-    </bean>
+<!--    <bean id="teacher" class="com.ant.bean.Teacher">-->
+<!--        <property name="tname" value="Mr Xu"></property>-->
+<!--    </bean>-->
 
+    <bean id="teacherFactory" class="com.ant.bean.TeacheFactor"></bean>
+    <bean id="teacher" factory-bean="teacherFactory" factory-method="createTeacher"></bean>
 </beans>

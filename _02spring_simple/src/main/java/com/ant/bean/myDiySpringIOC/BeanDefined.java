@@ -9,5 +9,6 @@ import lombok.Data;
 public class BeanDefined {
     private String beanId;
     private String clasPath;
+    private String scope;
 
 }

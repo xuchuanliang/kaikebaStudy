@@ -10,11 +10,4 @@ public class Teacher {
     public void setTname(String tname) {
         this.tname = tname;
     }
-
-    @Override
-    public String toString() {
-        return "Teacher{" +
-                "tname='" + tname + '\'' +
-                '}';
-    }
 }
