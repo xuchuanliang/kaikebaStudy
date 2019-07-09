@@ -4,6 +4,7 @@ import com.ant.bean.myDiySpringIOC.BeanDefined;
 import com.ant.bean.myDiySpringIOC.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,8 @@ public class TestMain {
     public static void main(String[] args) throws Exception {
 //        testMySpring();
 //        testScope();
-        getBeanByFactory();
+//        getBeanByFactory();
+        getBeanDIYFactory();
     }
 
     public static void testSpring(){
@@ -23,7 +25,7 @@ public class TestMain {
         System.out.println(student);
     }
 
-    public static void testMySpring() throws IllegalAccessException, InstantiationException, ClassNotFoundException {
+    public static void testMySpring() throws Exception {
         BeanDefined beanDefined = new BeanDefined();
         beanDefined.setBeanId("teacher");
         beanDefined.setClasPath("com.ant.bean.Teacher");
@@ -35,7 +37,7 @@ public class TestMain {
         System.out.println(teacher);
     }
 
-    public static void testScope() throws IllegalAccessException, InstantiationException, ClassNotFoundException {
+    public static void testScope() throws Exception {
         BeanDefined beanDefined = new BeanDefined();
         beanDefined.setBeanId("teacher");
         beanDefined.setClasPath("com.ant.bean.Teacher");
@@ -55,5 +57,22 @@ public class TestMain {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring_config.xml");
         Teacher teacher = applicationContext.getBean(Teacher.class);
         System.out.println(teacher);
+    }
+
+    private static void getBeanDIYFactory() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        BeanDefined beanDefined = new BeanDefined();
+        beanDefined.setBeanId("teacher");
+        beanDefined.setClasPath("com.ant.bean.Teacher");
+        beanDefined.setFactoryMethod("createTeacher");
+        beanDefined.setBeanFactory("com.ant.bean.TeacheFactor");
+//        beanDefined.setScope("prototype");
+        List<BeanDefined> beanDefinedList = new ArrayList<BeanDefined>();
+        beanDefinedList.add(beanDefined);
+        BeanFactory beanFactory = new BeanFactory(beanDefinedList);
+        beanFactory.setBeanDefinedList(beanDefinedList);
+        Teacher teacher = (Teacher)beanFactory.getBean("teacher");
+        System.out.println(teacher);
+        Teacher teacher2 = (Teacher)beanFactory.getBean("teacher");
+        System.out.println(teacher2);
     }
 }

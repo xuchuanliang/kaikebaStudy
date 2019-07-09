@@ -10,5 +10,7 @@ public class BeanDefined {
     private String beanId;
     private String clasPath;
     private String scope;
+    private String beanFactory;
+    private String factoryMethod;
 
 }
