@@ -13,6 +13,8 @@
 <!--        <property name="tname" value="Mr Xu"></property>-->
 <!--    </bean>-->
 
-    <bean id="teacherFactory" class="com.ant.bean.TeacheFactor"></bean>
-    <bean id="teacher" factory-bean="teacherFactory" factory-method="createTeacher"></bean>
+<!--    <bean id="teacherFactory" class="com.ant.bean.TeacheFactor"></bean>-->
+<!--    <bean id="teacher" factory-bean="teacherFactory" factory-method="createTeacher"></bean>-->
+    <bean id="someService" class="com.ant.bean.beanPostProcesser.SomeServiceImpl"></bean>
+    <bean id="myPostProcesser" class="com.ant.bean.beanPostProcesser.MyPostProcesser"></bean>
 </beans>

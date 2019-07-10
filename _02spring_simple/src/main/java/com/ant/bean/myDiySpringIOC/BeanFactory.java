@@ -4,9 +4,11 @@ import com.ant.bean.Teacher;
 import lombok.Data;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,12 +27,26 @@ public class BeanFactory {
      */
     private Map<String,Object> springIoc = new HashMap<>();
 
+    private List<BeanPostProcessor> beanPostProcessors = new ArrayList<>();
+
+    /**
+     * 构造对象工厂时
+     * 1.创建所有对象
+     * 2.创建并保存后置处理器
+     * @param beanDefinedList
+     */
     public BeanFactory(List<BeanDefined> beanDefinedList){
         this.beanDefinedList = beanDefinedList;
         //初始化单例对象
         beanDefinedList.stream().filter(b->"singleton".equals(b.getScope()) || StringUtils.isEmpty(b.getScope())).forEach(b->{
             try {
-                createNewBean(b);
+                //初始化对象
+                Object obj = createNewBean(b);
+                springIoc.put(b.getBeanId(),obj);
+                //初始化对象中所有的后置处理器
+                if(isProcesser(obj)){
+                    beanPostProcessors.add((BeanPostProcessor) obj);
+                }
             } catch (InstantiationException e) {
             } catch (IllegalAccessException e) {
             } catch (ClassNotFoundException e) {
@@ -51,6 +67,8 @@ public class BeanFactory {
             for(BeanDefined beanDefined:beanDefinedList){
                 if(beanDefined.getBeanId().equals(beanId)){
                     obj = createNewBean(beanDefined);
+                    this.invokAllPostProcesserBefore(beanId,obj);
+                    this.invokAllPostProcesserBefore(beanId,obj);
                 }
             }
         }
@@ -91,6 +109,48 @@ public class BeanFactory {
             object = createNewBeanByFactory(beanDefined);
         }
         return object;
+    }
+
+    /**
+     * 判断是否是后置处理器
+     * @param object
+     * @return
+     */
+    private boolean isProcesser(Object object){
+        Class<?>[] interfaces = object.getClass().getInterfaces();
+        if(null!=interfaces && interfaces.length>0){
+            for(Class<?> clazz:interfaces){
+                if(clazz==BeanPostProcessor.class){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 获取对象前调用后置处理器中的前置方法
+     * @param beanId
+     * @param bean
+     */
+    private void invokAllPostProcesserBefore(String beanId,Object bean){
+        if(beanPostProcessors.size()>0){
+            beanPostProcessors.forEach(b->{
+                b.postProcessBeforeInitialization(bean,beanId);
+            });
+        }
+    }
+    /**
+     * 获取对象前调用后置处理器中的后置方法
+     * @param beanId
+     * @param bean
+     */
+    private void invokAllPostProcesserAfter(String beanId,Object bean){
+        if(beanPostProcessors.size()>0){
+            beanPostProcessors.forEach(b->{
+                b.postProcessAfterInitialization(bean,beanId);
+            });
+        }
     }
 
     /**

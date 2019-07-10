@@ -1,5 +1,6 @@
 import com.ant.bean.Student;
 import com.ant.bean.Teacher;
+import com.ant.bean.beanPostProcesser.SomeService;
 import com.ant.bean.myDiySpringIOC.BeanDefined;
 import com.ant.bean.myDiySpringIOC.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,7 +15,8 @@ public class TestMain {
 //        testMySpring();
 //        testScope();
 //        getBeanByFactory();
-        getBeanDIYFactory();
+//        getBeanDIYFactory();
+        testPostProcesser();
     }
 
     public static void testSpring(){
@@ -74,5 +76,14 @@ public class TestMain {
         System.out.println(teacher);
         Teacher teacher2 = (Teacher)beanFactory.getBean("teacher");
         System.out.println(teacher2);
+    }
+
+    /**
+     * 调用getBean时先调用对象的构造方法、其次调用postProcessBeforeInitialization(),postProcessAfterInitialization(),
+     */
+    private static void testPostProcesser(){
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring_config.xml");
+        SomeService someService = applicationContext.getBean(SomeService.class);
+        System.out.println(someService.some());
     }
 }
