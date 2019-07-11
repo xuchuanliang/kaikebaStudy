@@ -1,5 +1,7 @@
+import com.ant.bean.DI.DIBean;
 import com.ant.bean.Student;
 import com.ant.bean.Teacher;
+import com.ant.bean.beanPostProcesser.MyPostProcesser;
 import com.ant.bean.beanPostProcesser.SomeService;
 import com.ant.bean.myDiySpringIOC.BeanDefined;
 import com.ant.bean.myDiySpringIOC.BeanFactory;
@@ -7,7 +9,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TestMain {
 
@@ -16,7 +20,10 @@ public class TestMain {
 //        testScope();
 //        getBeanByFactory();
 //        getBeanDIYFactory();
-        testPostProcesser();
+//        testPostProcesser();
+//        testMyPostProcesser();
+//        testDI();
+        testMyDI();
     }
 
     public static void testSpring(){
@@ -61,7 +68,7 @@ public class TestMain {
         System.out.println(teacher);
     }
 
-    private static void getBeanDIYFactory() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    private static void getBeanDIYFactory() throws Exception {
         BeanDefined beanDefined = new BeanDefined();
         beanDefined.setBeanId("teacher");
         beanDefined.setClasPath("com.ant.bean.Teacher");
@@ -85,5 +92,53 @@ public class TestMain {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring_config.xml");
         SomeService someService = applicationContext.getBean(SomeService.class);
         System.out.println(someService.some());
+    }
+
+    /**
+     * 自定义bean后置工程：BeanPostProcesser
+     * @throws ClassNotFoundException
+     * @throws NoSuchMethodException
+     * @throws InvocationTargetException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     */
+    private static void testMyPostProcesser() throws Exception {
+        BeanDefined beanDefined = new BeanDefined();
+        beanDefined.setClasPath("com.ant.bean.beanPostProcesser.SomeServiceImpl");
+        beanDefined.setBeanId("someService");
+        BeanDefined postProcesser = new BeanDefined();
+        postProcesser.setBeanId("myPostProcesser");
+        postProcesser.setClasPath("com.ant.bean.beanPostProcesser.MyPostProcesser");
+        List<BeanDefined> beanDefineds = new ArrayList<>();
+        beanDefineds.add(beanDefined);
+        beanDefineds.add(postProcesser);
+        BeanFactory beanFactory = new BeanFactory(beanDefineds);
+        SomeService someService = (SomeService) beanFactory.getBean("someService");
+        System.out.println(someService.some());
+    }
+
+    /**
+     * 使用spring依赖注入
+     */
+    private static void testDI(){
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring_config.xml");
+        DIBean bean = applicationContext.getBean(DIBean.class);
+        System.out.println(bean);
+    }
+
+    private static void testMyDI() throws IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchFieldException, NoSuchMethodException, ClassNotFoundException {
+        BeanDefined beanDefined = new BeanDefined();
+        beanDefined.setClasPath("com.ant.bean.DI.DIBean");
+        beanDefined.setBeanId("dIBean");
+        Map<String,String> map = new HashMap<>();
+        map.put("teacherName","xuchuanliang");
+        map.put("friendArray","qg,xjjj,zzz");
+        map.put("school","安徽财经大学，安徽大学，清华，北大");
+        beanDefined.setPropertyMap(map);
+        List<BeanDefined> beanDefineds = new ArrayList<>();
+        beanDefineds.add(beanDefined);
+        BeanFactory beanFactory = new BeanFactory(beanDefineds);
+        Object dIBean = beanFactory.getBean("dIBean");
+        System.out.println(dIBean);
     }
 }

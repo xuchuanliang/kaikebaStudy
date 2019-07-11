@@ -15,6 +15,12 @@
 
 <!--    <bean id="teacherFactory" class="com.ant.bean.TeacheFactor"></bean>-->
 <!--    <bean id="teacher" factory-bean="teacherFactory" factory-method="createTeacher"></bean>-->
-    <bean id="someService" class="com.ant.bean.beanPostProcesser.SomeServiceImpl"></bean>
-    <bean id="myPostProcesser" class="com.ant.bean.beanPostProcesser.MyPostProcesser"></bean>
+<!--    <bean id="someService" class="com.ant.bean.beanPostProcesser.SomeServiceImpl"></bean>-->
+<!--    <bean id="myPostProcesser" class="com.ant.bean.beanPostProcesser.MyPostProcesser"></bean>-->
+
+    <bean id="dIBean" class="com.ant.bean.DI.DIBean">
+        <property name="teacherName" value="ant"></property>
+        <property name="friendArray" value="mike,xuchuanliang,xxx"></property>
+        <property name="school" value="安徽大学,安徽财经大学"></property>
+     </bean>
 </beans>
