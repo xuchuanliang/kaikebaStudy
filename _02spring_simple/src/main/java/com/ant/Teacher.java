@@ -1,4 +1,4 @@
-package com.ant.bean;
+package com.ant;
 
 public class Teacher {
     private String tname;

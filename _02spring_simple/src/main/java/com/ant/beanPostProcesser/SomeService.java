@@ -1,4 +1,4 @@
-package com.ant.bean.beanPostProcesser;
+package com.ant.beanPostProcesser;
 
 public interface SomeService {
     String some();

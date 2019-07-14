@@ -1,4 +1,4 @@
-package com.ant.bean.beanPostProcesser;
+package com.ant.beanPostProcesser;
 
 public class SomeServiceImpl implements SomeService{
     @Override

@@ -1,10 +1,9 @@
-package com.ant.bean.myDiySpringIOC;
+package com.ant.myDiySpringIOC;
 
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

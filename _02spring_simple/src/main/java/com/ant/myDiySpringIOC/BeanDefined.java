@@ -1,4 +1,4 @@
-package com.ant.bean.myDiySpringIOC;
+package com.ant.myDiySpringIOC;
 
 import lombok.Data;
 

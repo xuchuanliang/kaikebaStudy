@@ -1,4 +1,4 @@
-package com.ant.bean.DI;
+package com.ant.DI;
 
 import lombok.Data;
 import lombok.ToString;

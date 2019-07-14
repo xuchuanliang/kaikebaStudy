@@ -1,10 +1,10 @@
-import com.ant.bean.DI.DIBean;
-import com.ant.bean.Student;
-import com.ant.bean.Teacher;
-import com.ant.bean.beanPostProcesser.MyPostProcesser;
-import com.ant.bean.beanPostProcesser.SomeService;
-import com.ant.bean.myDiySpringIOC.BeanDefined;
-import com.ant.bean.myDiySpringIOC.BeanFactory;
+import com.ant.DI.DIBean;
+import com.ant.Student;
+import com.ant.Teacher;
+import com.ant.aop.BaseService;
+import com.ant.beanPostProcesser.SomeService;
+import com.ant.myDiySpringIOC.BeanDefined;
+import com.ant.myDiySpringIOC.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.lang.reflect.InvocationTargetException;
@@ -23,7 +23,9 @@ public class TestMain {
 //        testPostProcesser();
 //        testMyPostProcesser();
 //        testDI();
-        testMyDI();
+//        testMyDI();
+//        testAdvise();
+        testAdvisor();
     }
 
     public static void testSpring(){
@@ -37,7 +39,7 @@ public class TestMain {
     public static void testMySpring() throws Exception {
         BeanDefined beanDefined = new BeanDefined();
         beanDefined.setBeanId("teacher");
-        beanDefined.setClasPath("com.ant.bean.Teacher");
+        beanDefined.setClasPath("com.ant.Teacher");
         List<BeanDefined> beanDefinedList = new ArrayList<BeanDefined>();
         beanDefinedList.add(beanDefined);
         BeanFactory beanFactory = new BeanFactory(beanDefinedList);
@@ -49,7 +51,7 @@ public class TestMain {
     public static void testScope() throws Exception {
         BeanDefined beanDefined = new BeanDefined();
         beanDefined.setBeanId("teacher");
-        beanDefined.setClasPath("com.ant.bean.Teacher");
+        beanDefined.setClasPath("com.ant.Teacher");
 //        beanDefined.setScope("prototype");
 //        beanDefined.setScope("prototype");
         List<BeanDefined> beanDefinedList = new ArrayList<BeanDefined>();
@@ -71,9 +73,9 @@ public class TestMain {
     private static void getBeanDIYFactory() throws Exception {
         BeanDefined beanDefined = new BeanDefined();
         beanDefined.setBeanId("teacher");
-        beanDefined.setClasPath("com.ant.bean.Teacher");
+        beanDefined.setClasPath("com.ant.Teacher");
         beanDefined.setFactoryMethod("createTeacher");
-        beanDefined.setBeanFactory("com.ant.bean.TeacheFactor");
+        beanDefined.setBeanFactory("com.ant.TeacheFactor");
 //        beanDefined.setScope("prototype");
         List<BeanDefined> beanDefinedList = new ArrayList<BeanDefined>();
         beanDefinedList.add(beanDefined);
@@ -104,11 +106,11 @@ public class TestMain {
      */
     private static void testMyPostProcesser() throws Exception {
         BeanDefined beanDefined = new BeanDefined();
-        beanDefined.setClasPath("com.ant.bean.beanPostProcesser.SomeServiceImpl");
+        beanDefined.setClasPath("com.ant.beanPostProcesser.SomeServiceImpl");
         beanDefined.setBeanId("someService");
         BeanDefined postProcesser = new BeanDefined();
         postProcesser.setBeanId("myPostProcesser");
-        postProcesser.setClasPath("com.ant.bean.beanPostProcesser.MyPostProcesser");
+        postProcesser.setClasPath("com.ant.beanPostProcesser.MyPostProcesser");
         List<BeanDefined> beanDefineds = new ArrayList<>();
         beanDefineds.add(beanDefined);
         beanDefineds.add(postProcesser);
@@ -128,7 +130,7 @@ public class TestMain {
 
     private static void testMyDI() throws IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchFieldException, NoSuchMethodException, ClassNotFoundException {
         BeanDefined beanDefined = new BeanDefined();
-        beanDefined.setClasPath("com.ant.bean.DI.DIBean");
+        beanDefined.setClasPath("com.ant.DI.DIBean");
         beanDefined.setBeanId("dIBean");
         Map<String,String> map = new HashMap<>();
         map.put("teacherName","xuchuanliang");
@@ -140,5 +142,30 @@ public class TestMain {
         BeanFactory beanFactory = new BeanFactory(beanDefineds);
         Object dIBean = beanFactory.getBean("dIBean");
         System.out.println(dIBean);
+    }
+
+    /**
+     * spring aop简单切面，使用advice实现前置通知
+     */
+    private static void testAdvise(){
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring_config.xml");
+        BaseService baseService = (BaseService) applicationContext.getBean("personProxy");
+        System.out.println(baseService);
+        baseService.eat();
+        baseService.wc();
+    }
+
+    /**
+     * 测试spring aop复杂代理：顾问
+     */
+    public static void testAdvisor(){
+        ClassPathXmlApplicationContext applicationContext = getClassPathXmlApplicationContext();
+        BaseService baseService = (BaseService) applicationContext.getBean("personProxy");
+        baseService.wc();
+        baseService.eat();
+    }
+
+    private static ClassPathXmlApplicationContext getClassPathXmlApplicationContext(){
+        return new ClassPathXmlApplicationContext("spring_config.xml");
     }
 }

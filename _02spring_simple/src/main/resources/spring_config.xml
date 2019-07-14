@@ -3,24 +3,60 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<!--    <bean id="student" class="com.ant.bean.Student">-->
+<!--    <bean id="student" class="com.ant.Student">-->
 <!--        <property name="age" value="22"></property>-->
 <!--        <property name="sname" value="xuchuanliang"></property>-->
 <!--        <property name="teacher" ref="teacher"></property>-->
 <!--    </bean>-->
 
-<!--    <bean id="teacher" class="com.ant.bean.Teacher">-->
+<!--    <bean id="teacher" class="com.ant.Teacher">-->
 <!--        <property name="tname" value="Mr Xu"></property>-->
 <!--    </bean>-->
 
-<!--    <bean id="teacherFactory" class="com.ant.bean.TeacheFactor"></bean>-->
+<!--    <bean id="teacherFactory" class="com.ant.TeacheFactor"></bean>-->
 <!--    <bean id="teacher" factory-bean="teacherFactory" factory-method="createTeacher"></bean>-->
-<!--    <bean id="someService" class="com.ant.bean.beanPostProcesser.SomeServiceImpl"></bean>-->
-<!--    <bean id="myPostProcesser" class="com.ant.bean.beanPostProcesser.MyPostProcesser"></bean>-->
+<!--    <bean id="someService" class="com.ant.beanPostProcesser.SomeServiceImpl"></bean>-->
+<!--    <bean id="myPostProcesser" class="com.ant.beanPostProcesser.MyPostProcesser"></bean>-->
 
-    <bean id="dIBean" class="com.ant.bean.DI.DIBean">
-        <property name="teacherName" value="ant"></property>
-        <property name="friendArray" value="mike,xuchuanliang,xxx"></property>
-        <property name="school" value="安徽大学,安徽财经大学"></property>
-     </bean>
+<!--    <bean id="dIBean" class="com.ant.DI.DIBean">-->
+<!--        <property name="teacherName" value="ant"></property>-->
+<!--        <property name="friendArray" value="mike,xuchuanliang,xxx"></property>-->
+<!--        <property name="school" value="安徽大学,安徽财经大学"></property>-->
+<!--     </bean>-->
+
+    <!--spring aop简单代理：adviser 前置通知-->
+<!--    <bean id="person" class="com.ant.aop.Person"></bean>-->
+<!--    <bean id="before" class="com.ant.aop.advise.MyBeforeAdvise"></bean>-->
+<!--    <bean id="personProxy" class="org.springframework.aop.framework.ProxyFactoryBean">-->
+<!--        <property name="target" ref="person"></property>-->
+<!--        <property name="interceptorNames" value="before"></property>-->
+<!--    </bean>-->
+
+    <!--spring aop顾问式通知，定位到具体类的具体方法-->
+    <bean id="person" class="com.ant.aop.Person"></bean>
+    <bean id="dog" class="com.ant.aop.Dog"></bean>
+    <!--注册切面-->
+    <bean id="myAdviser" class="com.ant.aop.advise.MyBeforeAdvise"></bean>
+    <!--注册类过滤器-->
+    <bean id="myClassFilter" class="com.ant.aop.advisor.MyClassFilter"></bean>
+    <!--注册方法匹配器-->
+    <bean id="myMethodMatcher" class="com.ant.aop.advisor.MyMethodMatcher"></bean>
+    <!--注册切入点-->
+    <bean id="myPointCut" class="com.ant.aop.advisor.MyPointCut">
+        <property name="classFilter" ref="myClassFilter"></property>
+        <property name="methodMatcher" ref="myMethodMatcher"></property>
+    </bean>
+    <!--注册顾问-->
+    <bean id="myPointcutAdvisor" class="com.ant.aop.advisor.MyPointcutAdvisor">
+        <property name="advice" ref="myAdviser"></property>
+        <property name="pointcut" ref="myPointCut"></property>
+    </bean>
+    <!--注册代理对象工厂，产生代理-->
+    <!--
+        此时生成的代理对象，只负责person.eat方法监控，与advice不同，不会对被代理对象的所有方法进行拦截监控
+    -->
+    <bean id="personProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="person"></property>
+        <property name="interceptorNames" value="myPointcutAdvisor"></property>
+    </bean>
 </beans>
