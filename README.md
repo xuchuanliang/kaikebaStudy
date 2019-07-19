@@ -46,6 +46,10 @@ spring DI是基于IOC使用的，实际上就是在Bean工厂在生成Bean对象
 什么是Web服务器（Servlet容器）？Tomcat,Jetty，Jboss等
 什么是web容器？：ServletContext（Servlet上下文），Servlet三大域对象之一（生命周期范围最大的一个）
 什么是spring容器？ApplicationContext（Spring上下文，实现了BeanFactory）
+在spring的核心包：context，apo，webmvc，beans等中都有一个***/config包下面都有一个xxxNamespaceHandler，用于解析特定标签的xml文件
+
+- 基于JDK和CGLIB的动态代理技术和基于aspectJ的静态代理技术
+
 
 
 2019年6月18日 22:21:31 第三课50分钟 JDK动态代理
@@ -61,3 +65,5 @@ spring DI是基于IOC使用的，实际上就是在Bean工厂在生成Bean对象
 2019年7月14日 15:42:27 第六课结束
 2019年7月14日 17:45:32 第七课结束
 2019年7月17日 12:30:06 第九课 第一段30分钟
+2019年7月18日 12:30:30 第九课第二段结束
+2019年7月19日 12:25:49 第九课第三段40分钟左右
