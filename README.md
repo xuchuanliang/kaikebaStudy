@@ -49,6 +49,9 @@ spring DI是基于IOC使用的，实际上就是在Bean工厂在生成Bean对象
 在spring的核心包：context，apo，webmvc，beans等中都有一个***/config包下面都有一个xxxNamespaceHandler，用于解析特定标签的xml文件
 
 - 基于JDK和CGLIB的动态代理技术和基于aspectJ的静态代理技术
+- spring主要做了几件事情：1.创建了一个Bean工厂，生产并管理bean；2.通过AOP技术，对Bean工厂中的Bean实例进行横切，功能增强；3.提供了很多AOP的具体实现，事务增强；4.内部提供了
+很多企业应用的javaBean：jdbcTemplate，JDBCDaoSupport
+- 需根据第十课笔记阅读spring源码
 
 
 
@@ -68,3 +71,4 @@ spring DI是基于IOC使用的，实际上就是在Bean工厂在生成Bean对象
 2019年7月18日 12:30:30 第九课第二段结束
 2019年7月19日 12:25:49 第九课第三段40分钟左右
 2019年7月22日 12:33:59 第九课第四段结束
+2019年7月22日 21:29:37 第十一课第一段45分钟左右
