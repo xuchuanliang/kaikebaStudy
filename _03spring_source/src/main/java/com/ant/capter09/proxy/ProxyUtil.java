@@ -1,7 +1,6 @@
-package com.ant.proxy;
+package com.ant.capter09.proxy;
 
-import com.ant.service.UserService;
-import com.ant.service.UserServiceImpl;
+import com.ant.capter09.service.UserService;
 import org.springframework.cglib.proxy.Enhancer;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;

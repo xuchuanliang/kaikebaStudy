@@ -1,7 +1,6 @@
-package com.ant.config;
+package com.ant.capter09.config;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 
 @Configuration
 public class Springconfig2 {

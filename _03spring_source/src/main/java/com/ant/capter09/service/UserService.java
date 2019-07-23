@@ -1,4 +1,4 @@
-package com.ant.service;
+package com.ant.capter09.service;
 
 public interface UserService {
     void save();

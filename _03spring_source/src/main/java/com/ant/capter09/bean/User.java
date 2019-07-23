@@ -1,4 +1,4 @@
-package com.ant.bean;
+package com.ant.capter09.bean;
 
 import lombok.ToString;
 import org.springframework.beans.factory.annotation.Value;

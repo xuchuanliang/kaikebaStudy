@@ -1,13 +1,12 @@
 package com.ant._03spring_source;
 
-import com.ant.bean.User;
-import com.ant.proxy.ProxyUtil;
-import com.ant.service.UserService;
-import com.ant.config.SpringConfig1;
-import com.ant.service.UserServiceImpl;
+import com.ant.capter09.bean.User;
+import com.ant.capter09.proxy.ProxyUtil;
+import com.ant.capter09.service.UserService;
+import com.ant.capter09.config.SpringConfig1;
+import com.ant.capter09.service.UserServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
