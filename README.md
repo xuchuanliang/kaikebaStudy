@@ -53,7 +53,7 @@ spring DI是基于IOC使用的，实际上就是在Bean工厂在生成Bean对象
 很多企业应用的javaBean：jdbcTemplate，JDBCDaoSupport
 - 需根据第十课笔记阅读spring源码
 - 持久层一般只做跟数据库增删改查有关操作，不体现业务动作
-
+- 阅读spring mvc源码，了解mvc(处理器，视图，前端控制器)和spring mvc三个组件（处理器映射器、处理器适配器、视图解析器）
 
 
 2019年6月18日 22:21:31 第三课50分钟 JDK动态代理
