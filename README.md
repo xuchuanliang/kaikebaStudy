@@ -54,6 +54,44 @@ spring DI是基于IOC使用的，实际上就是在Bean工厂在生成Bean对象
 - 需根据第十课笔记阅读spring源码
 - 持久层一般只做跟数据库增删改查有关操作，不体现业务动作
 - 阅读spring mvc源码，了解mvc(处理器，视图，前端控制器)和spring mvc三个组件（处理器映射器、处理器适配器、视图解析器）
+- @requestMapping中consumes指定处理请求的提交内容类型（content-type）,例如application/json,text/html；
+produces指定返回的内容类型，仅当request请求头中的（Accept）类型中包含该指定类型才返回
+- 异常分为运行时异常和编译时异常
+- spring mvc接参类型转换器：继承Convert并通过配置，spring boot自行研究下
+- 异常处理器
+- MIME：多用途互联网邮件扩展类型，也叫媒体类型，是设定某种扩展名的文件用一种应用程序来打开的方式类型，当该扩展名文件被访问的时候，
+浏览器会自动使用指定应用程序来打开。格式：大类型/小类型，如text/html，image/jpg。
+- 跨域：由于浏览器对于JavaScript的同源策略的限制，导致A网站不能通JS去访问B网站的数据，出现类跨域问题。
+- 跨域指的是域名、端口、协议的组合不同就是跨域。
+- 解决跨域的方式有多种，比如基于JavaScript的解决方式、基于jquery的jsonp方式，以及基于CORS的方式。JSONP和CORS的区别之一，就是
+JSONP只能解决get方式提交，CORS支持GET和POST。
+- CORS是一个W3C标准，全称是跨域资源共享，它允许浏览器向跨资源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。
+CORS需要浏览器和服务器同时支持，目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。
+- CORS的原理：只需要向响应头header中注入Access-Control-Allow-Origin，这样浏览器检测到header中的Access-Control-Allow-Origin，就可以跨域操作了。
+- Content-Type:MediaType，即Internet Media Type，互联网媒体类型，也叫做MIME类型，在http协议消息头中，使用Content-Type来表示具体请求中的媒体类型信息。
+> 类型格式：type/subtype(;parameter)?type
+>主类型，任意的字符串，如text，如果*号代表所有
+>subtype：子类型，任意的字符串，如html，*代表所有
+>parameter：可选，一些参数，如Accept请求头的q参数，Content-Type的charset参数，如Content-Type:text/html;charset-utf-8;
+ 常见的媒体格式类型如下：
+    text/html ： HTML格式
+    text/plain ：纯文本格式      
+    text/xml ：  XML格式
+    image/gif ：gif图片格式    
+    image/jpeg ：jpg图片格式 
+    image/png：png图片格式
+   以application开头的媒体格式类型：
+   application/xhtml+xml ：XHTML格式
+   application/xml     ： XML数据格式
+   application/atom+xml  ：Atom XML聚合格式    
+   application/json    ： JSON数据格式
+   application/pdf       ：pdf格式  
+   application/msword  ： Word文档格式
+   application/octet-stream ： 二进制流数据（如常见的文件下载）
+   application/x-www-form-urlencoded ： <form encType=””>中默认的encType，form表单数据被编码为key/value格式发送到服务器（表单默认的提交数据的格式）
+   另外一种常见的媒体格式是上传文件之时使用的：
+    multipart/form-data ： 需要在表单中进行文件上传时，就需要使用该格式
+     以上就是我们在日常的开发中，经常会用到的若干content-type的内容格式。
 
 
 2019年6月18日 22:21:31 第三课50分钟 JDK动态代理
