@@ -17,6 +17,7 @@
         <module>_01mybatis</module>
         <module>_02spring_simple</module>
         <module>_03spring_source</module>
+        <module>_04spring_redis</module>
     </modules>
     <packaging>pom</packaging>
 
