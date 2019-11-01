@@ -58,4 +58,5 @@ public class RedisUtil {
         Object result = jedisPool.getResource().eval(script, Collections.singletonList(key),Collections.singletonList(value));
         return result.equals(1L);
     }
+
 }
