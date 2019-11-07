@@ -3,34 +3,34 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-<!--    <bean id="student" class="com.ant.Student">-->
-<!--        <property name="age" value="22"></property>-->
-<!--        <property name="sname" value="xuchuanliang"></property>-->
-<!--        <property name="teacher" ref="teacher"></property>-->
-<!--    </bean>-->
+    <!--    <bean id="student" class="com.ant.Student">-->
+    <!--        <property name="age" value="22"></property>-->
+    <!--        <property name="sname" value="xuchuanliang"></property>-->
+    <!--        <property name="teacher" ref="teacher"></property>-->
+    <!--    </bean>-->
 
-<!--    <bean id="teacher" class="com.ant.Teacher">-->
-<!--        <property name="tname" value="Mr Xu"></property>-->
-<!--    </bean>-->
+    <!--    <bean id="teacher" class="com.ant.Teacher">-->
+    <!--        <property name="tname" value="Mr Xu"></property>-->
+    <!--    </bean>-->
 
-<!--    <bean id="teacherFactory" class="com.ant.TeacheFactor"></bean>-->
-<!--    <bean id="teacher" factory-bean="teacherFactory" factory-method="createTeacher"></bean>-->
-<!--    <bean id="someService" class="com.ant.beanPostProcesser.SomeServiceImpl"></bean>-->
-<!--    <bean id="myPostProcesser" class="com.ant.beanPostProcesser.MyPostProcesser"></bean>-->
+    <!--    <bean id="teacherFactory" class="com.ant.TeacheFactor"></bean>-->
+    <!--    <bean id="teacher" factory-bean="teacherFactory" factory-method="createTeacher"></bean>-->
+    <!--    <bean id="someService" class="com.ant.beanPostProcesser.SomeServiceImpl"></bean>-->
+    <!--    <bean id="myPostProcesser" class="com.ant.beanPostProcesser.MyPostProcesser"></bean>-->
 
-<!--    <bean id="dIBean" class="com.ant.DI.DIBean">-->
-<!--        <property name="teacherName" value="ant"></property>-->
-<!--        <property name="friendArray" value="mike,xuchuanliang,xxx"></property>-->
-<!--        <property name="school" value="安徽大学,安徽财经大学"></property>-->
-<!--     </bean>-->
+    <!--    <bean id="dIBean" class="com.ant.DI.DIBean">-->
+    <!--        <property name="teacherName" value="ant"></property>-->
+    <!--        <property name="friendArray" value="mike,xuchuanliang,xxx"></property>-->
+    <!--        <property name="school" value="安徽大学,安徽财经大学"></property>-->
+    <!--     </bean>-->
 
     <!--spring aop简单代理：adviser 前置通知-->
-<!--    <bean id="person" class="com.ant.aop.Person"></bean>-->
-<!--    <bean id="before" class="com.ant.aop.advise.MyBeforeAdvise"></bean>-->
-<!--    <bean id="personProxy" class="org.springframework.aop.framework.ProxyFactoryBean">-->
-<!--        <property name="target" ref="person"></property>-->
-<!--        <property name="interceptorNames" value="before"></property>-->
-<!--    </bean>-->
+    <!--    <bean id="person" class="com.ant.aop.Person"></bean>-->
+    <!--    <bean id="before" class="com.ant.aop.advise.MyBeforeAdvise"></bean>-->
+    <!--    <bean id="personProxy" class="org.springframework.aop.framework.ProxyFactoryBean">-->
+    <!--        <property name="target" ref="person"></property>-->
+    <!--        <property name="interceptorNames" value="before"></property>-->
+    <!--    </bean>-->
 
     <!--spring aop顾问式通知，定位到具体类的具体方法-->
     <bean id="person" class="com.ant.aop.Person"></bean>

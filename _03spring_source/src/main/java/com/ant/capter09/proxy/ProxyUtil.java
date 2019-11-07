@@ -19,15 +19,16 @@ public class ProxyUtil {
     /**
      * jdk动态代理
      * 需要提前创建对象，对象需要实现接口，需要知道被拦截的方法
+     *
      * @param userService
      * @return
      */
-    public static UserService jdkProxy(UserService userService){
+    public static UserService jdkProxy(UserService userService) {
         return (UserService) Proxy.newProxyInstance(userService.getClass().getClassLoader(), userService.getClass().getInterfaces(), new InvocationHandler() {
             @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                 System.out.print("执行方法前");
-                Object o = method.invoke(userService,args);
+                Object o = method.invoke(userService, args);
                 System.out.print("执行方法后");
                 return o;
             }
@@ -37,10 +38,11 @@ public class ProxyUtil {
     /**
      * cglib动态代理
      * 不需要提前创建对象，只需要知道需要被继承的类型，并且知道需要被拦截的方法就行
+     *
      * @param userService
      * @return
      */
-    public static UserService cglibProxy(Class clazz){
+    public static UserService cglibProxy(Class clazz) {
         //创建增强器
         Enhancer enhancer = new Enhancer();
         //设置需要继承的父类类型，这里必须是实际类的类型，而能是接口的类型，否则cglib在执行方法时会报错误
@@ -59,7 +61,7 @@ public class ProxyUtil {
             @Override
             public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
                 System.out.print("执行方法前");
-                return methodProxy.invokeSuper(o,objects);
+                return methodProxy.invokeSuper(o, objects);
             }
         });
         return (UserService) enhancer.create();

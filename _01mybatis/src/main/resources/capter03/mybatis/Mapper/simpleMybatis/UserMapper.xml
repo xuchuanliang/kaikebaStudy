@@ -9,7 +9,7 @@
             <arg column="created" name="created"></arg>
         </constructor>
     </resultMap>
-    
+
     <resultMap id="findAllResMap" type="capter02.mybatis.bean.Dept">
         <id property="id" column="id"></id>
         <result property="name" column="name"></result>

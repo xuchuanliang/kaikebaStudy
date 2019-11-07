@@ -3,7 +3,7 @@ package com.ant.aop;
 /**
  * 小狗
  */
-public class Dog implements BaseService{
+public class Dog implements BaseService {
     @Override
     public void eat() {
         System.out.println("啃骨头");

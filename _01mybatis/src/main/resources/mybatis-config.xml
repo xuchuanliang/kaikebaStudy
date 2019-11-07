@@ -13,7 +13,7 @@
     </typeHandlers>
 
     <objectFactory type="capter02.mybatis.MyDeptFacory"></objectFactory>
-    
+
     <plugins>
         <plugin interceptor="capter02.mybatis.MyInterceptor"></plugin>
     </plugins>

@@ -3,7 +3,7 @@ package capter03.simpleMybatis;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class DeptMapper implements SqlSession{
+public class DeptMapper implements SqlSession {
 
     private PreparedStatement preparedStatement;
 

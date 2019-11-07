@@ -1,6 +1,6 @@
 package com.ant.beanPostProcesser;
 
-public class SomeServiceImpl implements SomeService{
+public class SomeServiceImpl implements SomeService {
     @Override
     public String some() {
         return "hellow ant";

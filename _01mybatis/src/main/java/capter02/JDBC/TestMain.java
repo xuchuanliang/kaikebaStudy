@@ -27,8 +27,8 @@ public class TestMain {
              */
             PreparedStatement preparedStatement = connection.prepareStatement("insert into dept values (?,?,?)");
             preparedStatement.setString(1, UUID.randomUUID().toString());
-            preparedStatement.setString(2,"金融事业部");
-            preparedStatement.setDate(3,new Date(System.currentTimeMillis()));
+            preparedStatement.setString(2, "金融事业部");
+            preparedStatement.setDate(3, new Date(System.currentTimeMillis()));
             /**
              * 执行新增语句
              */
