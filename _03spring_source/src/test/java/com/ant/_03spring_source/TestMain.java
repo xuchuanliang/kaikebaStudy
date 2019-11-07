@@ -30,13 +30,13 @@ public class TestMain {
     private User user;
 
     @Test
-    public void test1(){
+    public void test1() {
         System.out.print(user);
         System.out.print(userService);
     }
 
     @Test
-    public void test2(){
+    public void test2() {
         UserService userService = new UserServiceImpl();
         UserService userService1 = ProxyUtil.jdkProxy(userService);
         UserService userService2 = ProxyUtil.cglibProxy(UserServiceImpl.class);

@@ -37,7 +37,7 @@ public class Test {
         String s = new String(str.getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
         //获取iso-8859-1字节数组
         byte[] ISO = s.getBytes(StandardCharsets.ISO_8859_1);
-        System.out.println(new String(ISO,"8859_1"));
+        System.out.println(new String(ISO, "8859_1"));
     }
 
     /**
@@ -85,7 +85,7 @@ public class Test {
             throws UnsupportedEncodingException {
 
         String s = "???";
-        new String(s.getBytes("UTF-8"),"GBK");
+        new String(s.getBytes("UTF-8"), "GBK");
 
         System.out.println("");
         System.out.println("原始String:\t\t" + str + "\t\t长度为：" + str.length());

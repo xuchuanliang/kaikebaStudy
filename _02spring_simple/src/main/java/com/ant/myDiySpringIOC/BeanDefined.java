@@ -29,6 +29,6 @@ public class BeanDefined {
     /**
      * 简单的依赖注入
      */
-    private Map<String,String> propertyMap;
+    private Map<String, String> propertyMap;
 
 }

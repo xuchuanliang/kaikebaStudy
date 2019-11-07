@@ -14,30 +14,30 @@ public class MyPostProcesser implements BeanPostProcessor {
 
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("before.."+beanName);
-        System.out.println("before.."+bean);
+        System.out.println("before.." + beanName);
+        System.out.println("before.." + bean);
         return bean;
     }
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        System.out.println("after.."+beanName);
-        System.out.println("after.."+bean);
+        System.out.println("after.." + beanName);
+        System.out.println("after.." + bean);
         System.out.println(bean instanceof SomeServiceImpl);
-        if(bean instanceof SomeServiceImpl){
+        if (bean instanceof SomeServiceImpl) {
             //如果是SomeServiceImpl，则创建将结果转成大写的代理对象
-            Object proxy =  Proxy.newProxyInstance(bean.getClass().getClassLoader(), bean.getClass().getInterfaces(), new InvocationHandler() {
+            Object proxy = Proxy.newProxyInstance(bean.getClass().getClassLoader(), bean.getClass().getInterfaces(), new InvocationHandler() {
                 @Override
                 public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                    if(method.getName().equals("some")){
+                    if (method.getName().equals("some")) {
                         //将some返回的字符串转成大写
-                        String result = (String) method.invoke(bean,args);
+                        String result = (String) method.invoke(bean, args);
                         return result.toUpperCase();
                     }
-                    return method.invoke(bean,args);
+                    return method.invoke(bean, args);
                 }
             });
-            System.out.println("proxy "+proxy);
+            System.out.println("proxy " + proxy);
             return proxy;
         }
         return bean;

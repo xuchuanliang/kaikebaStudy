@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Import;
 @Configuration
 @ComponentScan("com.ant")
 public class SpringConfig1 {
-    public SpringConfig1(){
+    public SpringConfig1() {
 //        System.out.print("1初始化");
     }
 }

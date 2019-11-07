@@ -210,8 +210,8 @@ public class BeanFactory {
                         } else if (field.getType().isArray()) {
                             //todo 此处反射数组赋值未找到好的方式
                             String[] ss = value.split(",");
-                            if(field.getType().getComponentType()==String.class){
-                                m.invoke(object,new String[][]{ss});
+                            if (field.getType().getComponentType() == String.class) {
+                                m.invoke(object, new String[][]{ss});
                             }
                         } else if (field.getType() == Boolean.class) {
                             m.invoke(object, Boolean.valueOf(value));

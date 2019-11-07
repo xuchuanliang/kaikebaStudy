@@ -29,7 +29,7 @@ public class TestMain {
 //        testAdvisor();
     }
 
-    public static void testSpring(){
+    public static void testSpring() {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring_config.xml");
         Teacher teacher = applicationContext.getBean(Teacher.class);
         Student student = applicationContext.getBean(Student.class);
@@ -99,6 +99,7 @@ public class TestMain {
 
     /**
      * 自定义bean后置工程：BeanPostProcesser
+     *
      * @throws ClassNotFoundException
      * @throws NoSuchMethodException
      * @throws InvocationTargetException

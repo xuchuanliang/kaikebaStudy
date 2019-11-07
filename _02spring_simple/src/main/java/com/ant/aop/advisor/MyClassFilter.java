@@ -9,6 +9,6 @@ import org.springframework.aop.ClassFilter;
 public class MyClassFilter implements ClassFilter {
     @Override
     public boolean matches(Class<?> clazz) {
-        return Person.class==clazz;
+        return Person.class == clazz;
     }
 }

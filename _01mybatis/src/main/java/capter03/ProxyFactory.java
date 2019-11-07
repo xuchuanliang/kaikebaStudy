@@ -11,6 +11,7 @@ public class ProxyFactory {
      * JDK动态代理模式下，代理对象的数据类型
      * 应该由监控行为来描述
      * 参数：Class<T>：需要被监控的类
+     *
      * @param t
      * @param <T>
      * @return
@@ -27,7 +28,7 @@ public class ProxyFactory {
          * interfaces:被监控对象隶属的类文件在内存中的真实地址
          * invocationHandler：监控对象发现被监控的行为被调用时，应该通知哪个通知对象进行辅助操作
          */
-        BaseMethods $proxy = (BaseMethods) Proxy.newProxyInstance(t.getClass().getClassLoader(),t.getClass().getInterfaces(),invocationHandler);
+        BaseMethods $proxy = (BaseMethods) Proxy.newProxyInstance(t.getClass().getClassLoader(), t.getClass().getInterfaces(), invocationHandler);
         return $proxy;
     }
 }

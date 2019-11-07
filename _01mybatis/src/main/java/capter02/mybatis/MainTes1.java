@@ -23,9 +23,10 @@ public class MainTes1 {
      * 3.SqlSession（接口）：提供开发人员一个接口作用：操作数据库（增删改查）
      * 4.Executor：是一个在SqlSession内部使用的接口，负责对数据库进行具体的操作
      * 5.mapped statement：（底层封装工具类），负责生成具体的SQL命令以及对查询结果进行二次封装
+     *
      * @param args
      */
-    public static void main(String[] args){
+    public static void main(String[] args) {
         try {
             Dept dept = new Dept();
             dept.setCreated(new Date());
@@ -58,7 +59,7 @@ public class MainTes1 {
              * 5.在执行器的doUpdate方法中，使用configuration创建一个org.apache.ibatis.executor.statement.StatementHandler对象：org.apache.ibatis.executor.statement.PreparedStatementHandler
              * 6.调用StatementHandler的执行方法：org.apache.ibatis.executor.statement.PreparedStatementHandler#update(java.sql.Statement)，在这个方法使用原生的java.sql的statement进行具体的执行操作
              */
-            sqlSession.insert("insertDept",dept);
+            sqlSession.insert("insertDept", dept);
             /**
              * 进行事务提交
              */

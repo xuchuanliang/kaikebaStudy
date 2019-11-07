@@ -3,18 +3,18 @@ package com.ant.capter09.service;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserService{
-    public UserServiceImpl(){
+public class UserServiceImpl implements UserService {
+    public UserServiceImpl() {
         System.out.print("userServiceIMple");
     }
 
     @Override
-    public void save(){
+    public void save() {
         System.out.println("save");
     }
 
     @Override
-    public void update(){
+    public void update() {
         System.out.println("update");
     }
 }

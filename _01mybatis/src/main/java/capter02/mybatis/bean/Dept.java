@@ -12,11 +12,11 @@ public class Dept {
     private String contry;
     private String year;
 
-    public Dept(){
+    public Dept() {
 
     }
 
-    public Dept(Date created){
+    public Dept(Date created) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy");
         this.year = simpleDateFormat.format(created);
         System.out.println(year);
