@@ -5,13 +5,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.7.RELEASE</version>
+        <version>2.2.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.hkbt</groupId>
-    <artifactId>_05spring_boot</artifactId>
+    <groupId>com.ant</groupId>
+    <artifactId>_06spring_boot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>_05spring_boot</name>
+    <name>_06spring_boot</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -25,13 +25,15 @@
         </dependency>
 
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>2.1.3.RELEASE</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>2.1.3.RELEASE</version>
         </dependency>
 
         <dependency>
