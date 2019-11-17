@@ -100,4 +100,37 @@ public class StudentContoller {
                 }).map(stu->new ResponseEntity<Student>(stu,HttpStatus.OK))
                 .defaultIfEmpty(new ResponseEntity<Student>(HttpStatus.NOT_FOUND));
     }
+
+    /**
+     * 根据id查询学生：查询成功则返回200，若未查询到则返回404
+     * @param id
+     * @return
+     */
+    @GetMapping("/findById/{id}")
+    public Mono<ResponseEntity<Student>> findById(@PathVariable("id") String id){
+        return studentRepository.findById(id).map(stu->new ResponseEntity<Student>(stu,HttpStatus.OK))
+                .defaultIfEmpty(new ResponseEntity<Student>(HttpStatus.NOT_FOUND));
+    }
+
+    /**
+     * 根据年龄上下线查询用户--一次性返回
+     * @param below
+     * @param top
+     * @return
+     */
+    @GetMapping("/findByAge/{below}/{top}")
+    public Flux<Student> findByAge(@PathVariable("below") int below,@PathVariable("top") int top){
+        return studentRepository.findByAgeBetween(below,top);
+    }
+
+    /**
+     * 根据年龄上下线查询用户--SSE实时性返回
+     * @param below
+     * @param top
+     * @return
+     */
+    @GetMapping(value = "/sse/findByAge/{below}/{top}",produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<Student> findByAgeSSE(@PathVariable("below") int below,@PathVariable("top") int top){
+        return studentRepository.findByAgeBetween(below,top);
+    }
 }
