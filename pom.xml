@@ -9,10 +9,11 @@
 	<description>Demo project for Spring Boot</description>
 	<packaging>pom</packaging>
 	<modules>
-		<module>_01mybatis</module>
-		<module>_02spring_simple</module>
-		<module>_03spring_source</module>
-		<module>_04spring_redis</module>
-        <module>_05spring_boot</module>
-	</modules>
+		<!--<module>_01mybatis</module>-->
+		<!--<module>_02spring_simple</module>-->
+		<!--<module>_03spring_source</module>-->
+		<!--<module>_04spring_redis</module>-->
+        <!--<module>_05spring_boot</module>-->
+        <module>dubbo-test</module>
+    </modules>
 </project>
