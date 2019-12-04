@@ -15,5 +15,7 @@
 		<!--<module>_04spring_redis</module>-->
         <!--<module>_05spring_boot</module>-->
         <module>dubbo-test</module>
+        <module>echo-java</module>
+        <module>echo-java</module>
     </modules>
 </project>
