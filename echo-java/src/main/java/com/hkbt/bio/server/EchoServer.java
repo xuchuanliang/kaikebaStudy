@@ -1,4 +1,4 @@
-package com.hkbt.server;
+package com.hkbt.bio.server;
 
 import com.hkbt.info.ServerInfo;
 
