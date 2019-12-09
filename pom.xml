@@ -16,5 +16,6 @@
         <!--<module>_05spring_boot</module>-->
         <module>dubbo-test</module>
         <module>echo-java</module>
+        <module>echo-netty</module>
     </modules>
 </project>
