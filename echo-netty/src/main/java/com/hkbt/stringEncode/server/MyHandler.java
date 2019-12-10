@@ -1,4 +1,4 @@
-package com.hkbt.dealPack.server;
+package com.hkbt.stringEncode.server;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -14,9 +14,7 @@ public class MyHandler extends ChannelInboundHandlerAdapter {
          * 注意：客户端增加了粘包拆包处理器后，这里发送到客户端的消息中也需要增加系统换行符，否则会导致客户端接收不到数据，阻塞
          */
         String content = "hello ,i am server" + System.getProperty("line.separator");
-        ByteBuf byteBuf = Unpooled.buffer(content.length());
-        byteBuf.writeBytes(content.getBytes());
-        ctx.writeAndFlush(byteBuf);
+        ctx.writeAndFlush(content);
         System.out.println("server active");
     }
 
@@ -42,18 +40,23 @@ public class MyHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         try{
-            ByteBuf byteBuf = (ByteBuf) msg;
-            System.out.println(byteBuf.toString(CharsetUtil.UTF_8));
-            if("bye".equalsIgnoreCase(byteBuf.toString(CharsetUtil.UTF_8))){
-                String bye = "bye";
-                ByteBuf byteBuf1 = Unpooled.buffer(bye.length());
-                byteBuf1.writeBytes(bye.getBytes());
-                ctx.writeAndFlush(byteBuf1);
+            String message = msg.toString();
+            System.out.println(message);
+            if("bye".equalsIgnoreCase(message)){
+                ctx.writeAndFlush("bye");
                 ctx.close();
+            }else{
+                ctx.writeAndFlush("server get message:"+message+" from client");
             }
         }finally {
             ReferenceCountUtil.release(msg);
         }
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        cause.printStackTrace();
+        ctx.close();
     }
 
     public static void main(String[] args){

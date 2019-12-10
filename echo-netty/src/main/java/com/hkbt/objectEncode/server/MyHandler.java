@@ -1,22 +1,15 @@
-package com.hkbt.dealPack.server;
+package com.hkbt.objectEncode.server;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
+import com.hkbt.myseparator.InfoUtil;
+import com.hkbt.objectEncode.Person;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.util.CharsetUtil;
 import io.netty.util.ReferenceCountUtil;
 
 public class MyHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        /**
-         * 注意：客户端增加了粘包拆包处理器后，这里发送到客户端的消息中也需要增加系统换行符，否则会导致客户端接收不到数据，阻塞
-         */
-        String content = "hello ,i am server" + System.getProperty("line.separator");
-        ByteBuf byteBuf = Unpooled.buffer(content.length());
-        byteBuf.writeBytes(content.getBytes());
-        ctx.writeAndFlush(byteBuf);
+        ctx.writeAndFlush(new Person("snail",20,"man",2.2));
         System.out.println("server active");
     }
 
@@ -42,18 +35,19 @@ public class MyHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         try{
-            ByteBuf byteBuf = (ByteBuf) msg;
-            System.out.println(byteBuf.toString(CharsetUtil.UTF_8));
-            if("bye".equalsIgnoreCase(byteBuf.toString(CharsetUtil.UTF_8))){
-                String bye = "bye";
-                ByteBuf byteBuf1 = Unpooled.buffer(bye.length());
-                byteBuf1.writeBytes(bye.getBytes());
-                ctx.writeAndFlush(byteBuf1);
-                ctx.close();
-            }
+            Person person = (Person)msg;
+            System.out.println(person);
+            person.setName("【server】"+person.getName());
+//            ctx.writeAndFlush(person);
         }finally {
             ReferenceCountUtil.release(msg);
         }
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        cause.printStackTrace();
+        ctx.close();
     }
 
     public static void main(String[] args){
