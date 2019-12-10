@@ -20,7 +20,7 @@ public class ClientMain {
     public static void main(String[] args) {
         EventLoopGroup eventExecutors = new NioEventLoopGroup(1);
         try {
-            ByteBuf byteBuf = Unpooled.copiedBuffer(InfoUtil.SEPARATOR.getBytes());
+            final ByteBuf byteBuf = Unpooled.copiedBuffer(InfoUtil.SEPARATOR.getBytes());
             Bootstrap bootstrap = new Bootstrap();
             ChannelFuture future = bootstrap.group(eventExecutors)
                     .channel(NioSocketChannel.class)

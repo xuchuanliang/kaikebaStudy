@@ -22,7 +22,7 @@ public class ServerMain {
         EventLoopGroup boss = new NioEventLoopGroup(2);
         EventLoopGroup workder = new NioEventLoopGroup(4);
         try {
-            ByteBuf byteBuf = Unpooled.copiedBuffer(InfoUtil.SEPARATOR.getBytes());
+            final ByteBuf byteBuf = Unpooled.copiedBuffer(InfoUtil.SEPARATOR.getBytes());
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             ChannelFuture future = serverBootstrap.group(boss, workder)
                     .channel(NioServerSocketChannel.class)

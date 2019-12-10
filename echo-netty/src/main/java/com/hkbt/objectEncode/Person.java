@@ -1,7 +1,10 @@
 package com.hkbt.objectEncode;
 
+import org.msgpack.annotation.Message;
+
 import java.io.Serializable;
 
+@Message
 public class Person implements Serializable {
     private String name;
     private int age;

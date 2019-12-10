@@ -8,6 +8,12 @@
 	<name>_05spring_boot</name>
 	<description>Demo project for Spring Boot</description>
 	<packaging>pom</packaging>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
 	<modules>
 		<!--<module>_01mybatis</module>-->
 		<!--<module>_02spring_simple</module>-->
